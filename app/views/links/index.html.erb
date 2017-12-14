@@ -1,0 +1,26 @@
+<h1>Index page</h1>
+
+<table>
+	<tr>
+		<th>Link</th>
+	</tr>
+	<%if @link.nil? %>
+	<h4>No links</h4>
+	<% else %>
+	<% @link.each do |links|%>
+		<tr>
+			<td><%= link_to links.link, link_path(links) %></td>
+			<td><%= link_to 'Edit', edit_link_path(links) %></td>
+			<td><%= link_to 'Show', link_path(links) %></td>
+			<td><%= link_to 'Delete', link_path(links) ,method: :delete ,data: {confirm:"Are you sure"}%></td>
+
+		</tr>
+	<% end %>	
+	<% end %>
+
+</table>
+<br>	
+<tr>
+<td><%= link_to 'Back' ,bookmarks_path %></td>
+<td><%= link_to "New Link" , new_link_path %></td>
+</tr>

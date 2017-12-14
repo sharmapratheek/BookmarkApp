@@ -1,0 +1,6 @@
+<h1>Show Link</h1>
+
+<p>Link:<%= @link.link %></p>
+<% if user_signed_in? %>
+<p><%= link_to "Back" , links_path(@book) %></p>
+<% end  %>

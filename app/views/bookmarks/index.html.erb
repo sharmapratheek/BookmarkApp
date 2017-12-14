@@ -7,9 +7,14 @@
 	<% @bookmark.each do |bookmark|%>
 		<tr>
 			<td><%= link_to bookmark.bookmark_name, bookmark_path(bookmark) %></td>
-			<td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-			<td><%= link_to 'Show', bookmark_path(bookmark) %></td>
-			<td><%= link_to 'Delete', bookmark_path(bookmark) ,method: :delete ,data: {confirm:"Are you sure"}%></td>
+			<td><%= link_to 'Show Link', links_path(book: bookmark) %></td>
+			<% if !current_user.nil? %>
+				
+				<% if bookmark.user_id == current_user.id %>
+				<td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
+				<td><%= link_to 'Delete', bookmark_path(bookmark) ,method: :delete ,data: {confirm:"Are you sure"}%></td>
+				<% end %>
+			<% end %>
 		</tr>
 	<% end %>
 </table>
